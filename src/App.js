@@ -125,9 +125,9 @@ const ItemValueList = () => {
         <div>
           <ul>
             {/* list dizisi üzerinde map fonksiyonu kullanılarak her öğe için bir <li> elemanı oluşturulur */}
-            {list.map((item) => (
+            {list.map((item,index) => (
               <li
-                key={item.id}
+                key={index}
                 className="flex justify-between items-center mb-2"
               >
                 {" "}
