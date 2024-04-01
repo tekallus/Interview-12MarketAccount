@@ -45,15 +45,16 @@ const ItemValueList = () => {
   const addItemToList = () => {
     if (itemName && itemValue > 0) {
       const newItem = {
+        id: list.length > 0 ? list[list.length - 1].id + 1 : 1, // Yeni id değerini dinamik olarak atayalım
         name: itemName,
         value: parseFloat(itemValue),
       };
-      setList([...list, newItem]); //
+      setList([...list, newItem]);
       setItemName("");
       setItemValue("");
     }
   };
-
+  
   // Listeden bir öğeyi kaldırmak için fonksiyon
   const removeItemFromList = (index) => {
     const newList = [...list];
@@ -127,7 +128,7 @@ const ItemValueList = () => {
             {/* list dizisi üzerinde map fonksiyonu kullanılarak her öğe için bir <li> elemanı oluşturulur */}
             {list.map((item,index) => (
               <li
-                key={index}
+              key={item.id}
                 className="flex justify-between items-center mb-2"
               >
                 {" "}
@@ -137,7 +138,7 @@ const ItemValueList = () => {
                 </span>{" "}
                 {/* Öğe adı ve fiyat */}
                 <button
-                  onClick={() => removeItemFromList(item.id)}
+                  onClick={() => removeItemFromList(index)}
                   className="text-red-500"
                 >
                   {" "}
